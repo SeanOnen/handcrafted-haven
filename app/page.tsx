@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { products } from "./lib/data";
 
 const categories = [
   { name: "Ceramics", color: "var(--color-terracotta)" },
@@ -7,16 +8,17 @@ const categories = [
   { name: "Woodwork", color: "var(--color-espresso)" },
 ];
 
-const products = [
-  { name: "Hand-thrown Stoneware Vase", seller: "by Amara", price: "$48.00", category: "Ceramics" },
-  { name: "Woven Wall Tapestry", seller: "by Leilani", price: "$120.00", category: "Textiles" },
-  { name: "Reclaimed Wood Shelf", seller: "by Marcus", price: "$95.00", category: "Woodwork" },
+const footerLinks = ["Privacy", "Terms", "Contact"];
+
+const navLinks = [
+  { label: "Shop", href: "/shop" },
+  { label: "Sellers", href: "#" },
+  { label: "About", href: "#" },
 ];
 
-const footerLinks = ["Privacy", "Terms", "Contact"];
-const navLinks = ["Shop", "Sellers", "About"];
-
 export default function Home() {
+  const featured = products.slice(0, 3);
+
   return (
     <main className="min-h-screen" style={{ backgroundColor: "var(--color-linen)", color: "var(--color-espresso)" }}>
 
@@ -28,12 +30,12 @@ export default function Home() {
         <div className="flex gap-6 items-center">
           {navLinks.map((item) => (
             <Link
-              key={item}
-              href="#"
+              key={item.label}
+              href={item.href}
               style={{ color: "var(--color-sand)", fontFamily: "var(--font-body)" }}
               className="text-sm hover:opacity-75 transition-opacity"
             >
-              {item}
+              {item.label}
             </Link>
           ))}
           <Link
@@ -62,7 +64,7 @@ export default function Home() {
         </p>
         <div className="flex gap-4">
           <Link
-            href="#"
+            href="/shop"
             style={{ backgroundColor: "var(--color-terracotta)", color: "var(--color-espresso)", fontFamily: "var(--font-body)" }}
             className="px-8 py-3 rounded-full text-sm hover:opacity-90 transition-opacity"
           >
@@ -87,7 +89,7 @@ export default function Home() {
           {categories.map((cat) => (
             <Link
               key={cat.name}
-              href="#"
+              href="/shop"
               className="rounded-2xl flex items-end p-5 h-36 hover:opacity-90 transition-opacity"
               style={{ backgroundColor: cat.color }}
             >
@@ -105,8 +107,8 @@ export default function Home() {
           Featured Products
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {products.map((product) => (
-            <div key={product.name} className="rounded-2xl overflow-hidden" style={{ backgroundColor: "var(--color-linen)" }}>
+          {featured.map((product) => (
+            <div key={product.id} className="rounded-2xl overflow-hidden" style={{ backgroundColor: "var(--color-linen)" }}>
               <div className="h-48 w-full" style={{ backgroundColor: "var(--color-terracotta)", opacity: 0.6 }} />
               <div className="p-5">
                 <span
@@ -119,14 +121,14 @@ export default function Home() {
                   {product.name}
                 </h3>
                 <p style={{ color: "var(--color-walnut)", fontFamily: "var(--font-body)" }} className="text-sm mb-3">
-                  {product.seller}
+                  by {product.seller}
                 </p>
                 <div className="flex justify-between items-center">
                   <span style={{ color: "var(--color-espresso)", fontFamily: "var(--font-body)" }} className="font-medium">
-                    {product.price}
+                    ${product.price}.00
                   </span>
                   <Link
-                    href="#"
+                    href={`/shop/${product.id}`}
                     className="text-xs px-4 py-1.5 rounded-full hover:opacity-90 transition-opacity"
                     style={{ backgroundColor: "var(--color-espresso)", color: "var(--color-linen)", fontFamily: "var(--font-body)" }}
                   >
