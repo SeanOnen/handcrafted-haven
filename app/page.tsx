@@ -71,7 +71,7 @@ export default function Home() {
             Shop Now
           </Link>
           <Link
-            href="#"
+            href="/register"
             style={{ border: "1px solid var(--color-sand)", color: "var(--color-sand)", fontFamily: "var(--font-body)" }}
             className="px-8 py-3 rounded-full text-sm hover:opacity-75 transition-opacity"
           >

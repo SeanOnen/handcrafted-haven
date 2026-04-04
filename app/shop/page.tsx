@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { products, categories } from "../lib/data";
+import { products, categories } from "@/app/lib/data";
 
 export default function ShopPage() {
   const [activeCategory, setActiveCategory] = useState("All");

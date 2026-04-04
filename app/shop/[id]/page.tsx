@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { products } from "../../lib/data";
+import { products } from "@/app/lib/data";
 import { notFound } from "next/navigation";
+import ReviewForm from "@/app/components/ReviewForm";
 
 export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -98,7 +99,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
             Add to Cart
           </Link>
           <Link
-            href="#"
+            href={`/sellers/${product.sellerId}`}
             className="text-center py-3 rounded-full text-sm hover:opacity-75 transition-opacity mt-3"
             style={{ border: "1px solid var(--color-espresso)", color: "var(--color-espresso)", fontFamily: "var(--font-body)" }}
           >
@@ -107,36 +108,8 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
         </div>
       </section>
 
-      {/* Reviews Section */}
-      <section className="px-8 py-12 max-w-5xl mx-auto">
-        <h2 style={{ fontFamily: "var(--font-display)", color: "var(--color-espresso)" }} className="text-2xl font-normal mb-6">
-          Customer Reviews
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {[
-            { name: "Sarah M.", rating: 5, comment: "Absolutely beautiful craftsmanship. Arrived well packaged and even better in person!" },
-            { name: "James K.", rating: 4, comment: "Great quality and unique piece. Shipping was fast and communication was excellent." },
-          ].map((review) => (
-            <div
-              key={review.name}
-              className="p-5 rounded-2xl"
-              style={{ backgroundColor: "var(--color-sand)", border: "1px solid var(--color-sand)" }}
-            >
-              <div className="flex justify-between items-center mb-2">
-                <span style={{ fontFamily: "var(--font-body)", color: "var(--color-espresso)" }} className="font-medium text-sm">
-                  {review.name}
-                </span>
-                <span style={{ color: "var(--color-terracotta)", fontFamily: "var(--font-body)" }} className="text-sm">
-                  {"★".repeat(review.rating)}{"☆".repeat(5 - review.rating)}
-                </span>
-              </div>
-              <p style={{ color: "var(--color-walnut)", fontFamily: "var(--font-body)" }} className="text-sm leading-relaxed">
-                {review.comment}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
+      {/* Reviews */}
+      <ReviewForm />
 
       {/* Related Products */}
       {relatedProducts.length > 0 && (
