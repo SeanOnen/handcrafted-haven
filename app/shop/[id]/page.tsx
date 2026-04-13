@@ -1,4 +1,6 @@
+import Navbar from "@/app/components/Navbar";
 import Link from "next/link";
+import Image from "next/image";
 import { products } from "@/app/lib/data";
 import { notFound } from "next/navigation";
 import ReviewForm from "@/app/components/ReviewForm";
@@ -16,35 +18,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
   return (
     <main className="min-h-screen" style={{ backgroundColor: "var(--color-linen)" }}>
 
-      {/* Navbar */}
-      <nav style={{ backgroundColor: "var(--color-espresso)" }} className="px-8 py-4 flex justify-between items-center">
-        <Link href="/" style={{ fontFamily: "var(--font-display)", color: "var(--color-linen)" }} className="text-2xl">
-          Handcrafted Haven
-        </Link>
-        <div className="flex gap-6 items-center">
-          {[
-            { label: "Shop", href: "/shop" },
-            { label: "Sellers", href: "#" },
-            { label: "About", href: "#" },
-          ].map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              style={{ color: "var(--color-sand)", fontFamily: "var(--font-body)" }}
-              className="text-sm hover:opacity-75 transition-opacity"
-            >
-              {item.label}
-            </Link>
-          ))}
-          <Link
-            href="#"
-            style={{ backgroundColor: "var(--color-terracotta)", color: "var(--color-espresso)", fontFamily: "var(--font-body)" }}
-            className="text-sm px-4 py-1.5 rounded-full hover:opacity-90 transition-opacity"
-          >
-            Sign In
-          </Link>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* Breadcrumb */}
       <div className="px-8 py-4 max-w-5xl mx-auto">
@@ -60,11 +34,15 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
       {/* Product Detail */}
       <section className="px-8 py-8 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
 
-        {/* Image Placeholder */}
-        <div
-          className="rounded-2xl w-full h-96"
-          style={{ backgroundColor: "var(--color-terracotta)", opacity: 0.6 }}
-        />
+        {/* Image */}
+        <div className="relative rounded-2xl overflow-hidden w-full h-96">
+          <Image
+            src={product.image}
+            alt={product.name}
+            fill
+            className="object-cover"
+          />
+        </div>
 
         {/* Info */}
         <div className="flex flex-col justify-center">
@@ -125,7 +103,14 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                 className="rounded-2xl overflow-hidden hover:opacity-90 transition-opacity"
                 style={{ backgroundColor: "var(--color-linen)", border: "1px solid var(--color-sand)" }}
               >
-                <div className="h-36 w-full" style={{ backgroundColor: "var(--color-terracotta)", opacity: 0.6 }} />
+                <div className="relative h-36 w-full">
+                  <Image
+                    src={p.image}
+                    alt={p.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
                 <div className="p-4">
                   <h3 style={{ fontFamily: "var(--font-display)", color: "var(--color-espresso)" }} className="text-base mb-1">
                     {p.name}

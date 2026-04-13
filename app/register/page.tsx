@@ -1,5 +1,6 @@
 "use client";
 
+import Navbar from "@/app/components/Navbar";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -78,28 +79,7 @@ export default function RegisterPage() {
     return (
       <main className="min-h-screen flex flex-col" style={{ backgroundColor: "var(--color-linen)" }}>
 
-        {/* Navbar */}
-        <nav style={{ backgroundColor: "var(--color-espresso)" }} className="px-8 py-4 flex justify-between items-center">
-          <Link href="/" style={{ fontFamily: "var(--font-display)", color: "var(--color-linen)" }} className="text-2xl">
-            Handcrafted Haven
-          </Link>
-          <div className="flex gap-6 items-center">
-            {[
-              { label: "Shop", href: "/shop" },
-              { label: "Sellers", href: "#" },
-              { label: "About", href: "#" },
-            ].map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                style={{ color: "var(--color-sand)", fontFamily: "var(--font-body)" }}
-                className="text-sm hover:opacity-75 transition-opacity"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </div>
-        </nav>
+        <Navbar />
 
         {/* Success State */}
         <div className="flex-1 flex flex-col items-center justify-center px-8 py-20 text-center">

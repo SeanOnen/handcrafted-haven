@@ -1,5 +1,6 @@
 "use client";
 
+import Navbar from "@/app/components/Navbar";
 import Link from "next/link";
 import { useState } from "react";
 import { products as initialProducts, Product } from "@/app/lib/data";
@@ -91,35 +92,7 @@ export default function ManageListingsPage() {
   return (
     <main className="min-h-screen" style={{ backgroundColor: "var(--color-linen)" }}>
 
-      {/* Navbar */}
-      <nav style={{ backgroundColor: "var(--color-espresso)" }} className="px-8 py-4 flex justify-between items-center">
-        <Link href="/" style={{ fontFamily: "var(--font-display)", color: "var(--color-linen)" }} className="text-2xl">
-          Handcrafted Haven
-        </Link>
-        <div className="flex gap-6 items-center">
-          {[
-            { label: "Shop", href: "/shop" },
-            { label: "Sellers", href: "#" },
-            { label: "About", href: "#" },
-          ].map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              style={{ color: "var(--color-sand)", fontFamily: "var(--font-body)" }}
-              className="text-sm hover:opacity-75 transition-opacity"
-            >
-              {item.label}
-            </Link>
-          ))}
-          <Link
-            href="#"
-            style={{ backgroundColor: "var(--color-terracotta)", color: "var(--color-espresso)", fontFamily: "var(--font-body)" }}
-            className="text-sm px-4 py-1.5 rounded-full hover:opacity-90 transition-opacity"
-          >
-            Sign In
-          </Link>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* Header */}
       <section className="px-8 py-14 text-center" style={{ backgroundColor: "var(--color-espresso)" }}>

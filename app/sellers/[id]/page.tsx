@@ -1,4 +1,6 @@
+import Navbar from "@/app/components/Navbar";
 import Link from "next/link";
+import Image from "next/image";
 import { sellers, products } from "@/app/lib/data";
 import { notFound } from "next/navigation";
 
@@ -13,35 +15,7 @@ export default async function SellerPage({ params }: { params: Promise<{ id: str
   return (
     <main className="min-h-screen" style={{ backgroundColor: "var(--color-linen)" }}>
 
-      {/* Navbar */}
-      <nav style={{ backgroundColor: "var(--color-espresso)" }} className="px-8 py-4 flex justify-between items-center">
-        <Link href="/" style={{ fontFamily: "var(--font-display)", color: "var(--color-linen)" }} className="text-2xl">
-          Handcrafted Haven
-        </Link>
-        <div className="flex gap-6 items-center">
-          {[
-            { label: "Shop", href: "/shop" },
-            { label: "Sellers", href: "#" },
-            { label: "About", href: "#" },
-          ].map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              style={{ color: "var(--color-sand)", fontFamily: "var(--font-body)" }}
-              className="text-sm hover:opacity-75 transition-opacity"
-            >
-              {item.label}
-            </Link>
-          ))}
-          <Link
-            href="#"
-            style={{ backgroundColor: "var(--color-terracotta)", color: "var(--color-espresso)", fontFamily: "var(--font-body)" }}
-            className="text-sm px-4 py-1.5 rounded-full hover:opacity-90 transition-opacity"
-          >
-            Sign In
-          </Link>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* Breadcrumb */}
       <div className="px-8 py-4 max-w-5xl mx-auto">
@@ -59,13 +33,13 @@ export default async function SellerPage({ params }: { params: Promise<{ id: str
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row gap-8 items-center md:items-start">
 
           {/* Avatar */}
-          <div
-            className="w-28 h-28 rounded-full flex items-center justify-center flex-shrink-0"
-            style={{ backgroundColor: "var(--color-terracotta)" }}
-          >
-            <span style={{ fontFamily: "var(--font-display)", color: "var(--color-espresso)", fontSize: "2.5rem" }}>
-              {seller.name.charAt(0)}
-            </span>
+          <div className="relative w-28 h-28 rounded-full overflow-hidden flex-shrink-0">
+            <Image
+              src={seller.image}
+              alt={seller.name}
+              fill
+              className="object-cover"
+            />
           </div>
 
           {/* Info */}
@@ -133,7 +107,14 @@ export default async function SellerPage({ params }: { params: Promise<{ id: str
               className="rounded-2xl overflow-hidden hover:opacity-90 transition-opacity"
               style={{ backgroundColor: "var(--color-linen)", border: "1px solid var(--color-sand)" }}
             >
-              <div className="h-44 w-full" style={{ backgroundColor: "var(--color-terracotta)", opacity: 0.6 }} />
+              <div className="relative h-44 w-full">
+                <Image
+                  src={product.image}
+                  alt={product.name}
+                  fill
+                  className="object-cover"
+                />
+              </div>
               <div className="p-4">
                 <span
                   className="text-xs px-3 py-1 rounded-full"

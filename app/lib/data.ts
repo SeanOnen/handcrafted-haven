@@ -8,6 +8,7 @@ export type Product = {
   description: string;
   rating: number;
   reviews: number;
+  image: string;
 };
 
 export type Seller = {
@@ -19,6 +20,7 @@ export type Seller = {
   specialty: string;
   totalSales: number;
   rating: number;
+  image: string;
 };
 
 export const sellers: Seller[] = [
@@ -31,6 +33,7 @@ export const sellers: Seller[] = [
     specialty: "Ceramics",
     totalSales: 80,
     rating: 4.9,
+    image: "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=400&q=80",
   },
   {
     id: "leilani",
@@ -41,6 +44,7 @@ export const sellers: Seller[] = [
     specialty: "Textiles",
     totalSales: 60,
     rating: 4.8,
+    image: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=400&q=80",
   },
   {
     id: "marcus",
@@ -51,6 +55,7 @@ export const sellers: Seller[] = [
     specialty: "Woodwork",
     totalSales: 60,
     rating: 4.8,
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80",
   },
   {
     id: "priya",
@@ -61,6 +66,7 @@ export const sellers: Seller[] = [
     specialty: "Jewelry",
     totalSales: 27,
     rating: 4.9,
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80",
   },
 ];
 
@@ -75,6 +81,7 @@ export const products: Product[] = [
     description: "A beautifully hand-thrown stoneware vase with a natural ash glaze. Each piece is unique and food safe.",
     rating: 4.8,
     reviews: 24,
+    image: "https://images.unsplash.com/photo-1612196808214-b8e1d6145a8c?w=600&q=80",
   },
   {
     id: "2",
@@ -86,6 +93,7 @@ export const products: Product[] = [
     description: "Hand-woven wall tapestry using natural cotton and wool. Earthy tones inspired by the desert landscape.",
     rating: 4.9,
     reviews: 18,
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
   },
   {
     id: "3",
@@ -97,6 +105,7 @@ export const products: Product[] = [
     description: "A rustic floating shelf crafted from reclaimed barn wood. Each shelf has its own unique grain and character.",
     rating: 4.7,
     reviews: 31,
+    image: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=600&q=80",
   },
   {
     id: "4",
@@ -108,6 +117,7 @@ export const products: Product[] = [
     description: "Delicate hand-formed silver earrings inspired by autumn leaves. Lightweight and hypoallergenic.",
     rating: 5.0,
     reviews: 12,
+    image: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&q=80",
   },
   {
     id: "5",
@@ -119,6 +129,7 @@ export const products: Product[] = [
     description: "Hand-knotted macrame plant hanger using natural cotton rope. Fits pots up to 6 inches in diameter.",
     rating: 4.6,
     reviews: 42,
+    image: "https://images.unsplash.com/photo-1622398925373-3f91b1e275f5?w=600&q=80",
   },
   {
     id: "6",
@@ -130,6 +141,7 @@ export const products: Product[] = [
     description: "A chunky, hand-thrown ceramic mug with a speckled glaze. Holds 12oz and is dishwasher safe.",
     rating: 4.9,
     reviews: 56,
+    image: "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=600&q=80",
   },
   {
     id: "7",
@@ -141,6 +153,7 @@ export const products: Product[] = [
     description: "A hand-finished walnut serving board with a juice groove. Food safe and treated with natural beeswax.",
     rating: 4.8,
     reviews: 29,
+    image: "https://images.unsplash.com/photo-1544025162-d76694265947?w=600&q=80",
   },
   {
     id: "8",
@@ -152,6 +165,7 @@ export const products: Product[] = [
     description: "Hand-hammered copper bangle bracelet with a brushed finish. Adjustable to fit most wrist sizes.",
     rating: 4.7,
     reviews: 15,
+    image: "https://images.unsplash.com/photo-1573408301185-9519f94815b1?w=600&q=80",
   },
 ];
 

@@ -1,6 +1,8 @@
 "use client";
 
+import Navbar from "@/app/components/Navbar";
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { products, categories } from "@/app/lib/data";
 
@@ -14,32 +16,8 @@ export default function ShopPage() {
   return (
     <main className="min-h-screen" style={{ backgroundColor: "var(--color-linen)" }}>
 
-      {/* Navbar */}
-      <nav style={{ backgroundColor: "var(--color-espresso)" }} className="px-8 py-4 flex justify-between items-center">
-        <Link href="/" style={{ fontFamily: "var(--font-display)", color: "var(--color-linen)" }} className="text-2xl">
-          Handcrafted Haven
-        </Link>
-        <div className="flex gap-6 items-center">
-          {["Shop", "Sellers", "About"].map((item) => (
-            <Link
-              key={item}
-              href="#"
-              style={{ color: "var(--color-sand)", fontFamily: "var(--font-body)" }}
-              className="text-sm hover:opacity-75 transition-opacity"
-            >
-              {item}
-            </Link>
-          ))}
-          <Link
-            href="#"
-            style={{ backgroundColor: "var(--color-terracotta)", color: "var(--color-espresso)", fontFamily: "var(--font-body)" }}
-            className="text-sm px-4 py-1.5 rounded-full hover:opacity-90 transition-opacity"
-          >
-            Sign In
-          </Link>
-        </div>
-      </nav>
-
+      <Navbar />
+      
       {/* Header */}
       <section className="px-8 py-14 text-center" style={{ backgroundColor: "var(--color-espresso)" }}>
         <h1 style={{ fontFamily: "var(--font-display)", color: "var(--color-linen)" }} className="text-5xl font-normal mb-4">
@@ -82,7 +60,14 @@ export default function ShopPage() {
               className="rounded-2xl overflow-hidden hover:opacity-90 transition-opacity"
               style={{ backgroundColor: "var(--color-linen)", border: "1px solid var(--color-sand)" }}
             >
-              <div className="h-44 w-full" style={{ backgroundColor: "var(--color-terracotta)", opacity: 0.6 }} />
+              <div className="relative h-44 w-full">
+                <Image
+                  src={product.image}
+                  alt={product.name}
+                  fill
+                  className="object-cover"
+                />
+              </div>
               <div className="p-4">
                 <span
                   className="text-xs px-3 py-1 rounded-full"

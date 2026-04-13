@@ -1,5 +1,7 @@
+import Navbar from "@/app/components/Navbar";
 import Link from "next/link";
-import { products } from "./lib/data";
+import Image from "next/image";
+import { products } from "@/app/lib/data";
 
 const categories = [
   { name: "Ceramics", color: "var(--color-terracotta)" },
@@ -22,32 +24,8 @@ export default function Home() {
   return (
     <main className="min-h-screen" style={{ backgroundColor: "var(--color-linen)", color: "var(--color-espresso)" }}>
 
-      {/* Navbar */}
-      <nav style={{ backgroundColor: "var(--color-espresso)" }} className="px-8 py-4 flex justify-between items-center">
-        <span style={{ fontFamily: "var(--font-display)", color: "var(--color-linen)" }} className="text-2xl">
-          Handcrafted Haven
-        </span>
-        <div className="flex gap-6 items-center">
-          {navLinks.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              style={{ color: "var(--color-sand)", fontFamily: "var(--font-body)" }}
-              className="text-sm hover:opacity-75 transition-opacity"
-            >
-              {item.label}
-            </Link>
-          ))}
-          <Link
-            href="#"
-            style={{ backgroundColor: "var(--color-terracotta)", color: "var(--color-espresso)", fontFamily: "var(--font-body)" }}
-            className="text-sm px-4 py-1.5 rounded-full hover:opacity-90 transition-opacity"
-          >
-            Sign In
-          </Link>
-        </div>
-      </nav>
-
+      <Navbar />
+      
       {/* Hero */}
       <section style={{ backgroundColor: "var(--color-espresso)" }} className="px-8 py-24 flex flex-col items-center text-center">
         <span
@@ -109,7 +87,14 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {featured.map((product) => (
             <div key={product.id} className="rounded-2xl overflow-hidden" style={{ backgroundColor: "var(--color-linen)" }}>
-              <div className="h-48 w-full" style={{ backgroundColor: "var(--color-terracotta)", opacity: 0.6 }} />
+              <div className="relative h-48 w-full">
+                <Image
+                  src={product.image}
+                  alt={product.name}
+                  fill
+                  className="object-cover"
+                />
+              </div>
               <div className="p-5">
                 <span
                   className="text-xs px-3 py-1 rounded-full"
@@ -150,7 +135,7 @@ export default function Home() {
           Join our growing community of makers. Set up your shop, share your story, and reach customers who value handcrafted quality.
         </p>
         <Link
-          href="#"
+          href="/register"
           className="px-8 py-3 rounded-full text-sm hover:opacity-90 transition-opacity"
           style={{ backgroundColor: "var(--color-linen)", color: "var(--color-sage)", fontFamily: "var(--font-body)" }}
         >
